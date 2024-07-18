@@ -1,0 +1,39 @@
+spring:
+  application:
+    :name: spring-keycloak
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: CLIENT_SPRING
+            client-secret: ZaV7QMccg1FfzPwLPULCnM2IIfkaFdTz
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/auth/realms/REALM_SPRING_API
+            user-name-attribute: preferred_username
+
+
+server:
+  port: 8081
+
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth/realms/REALM_SPRING_API
+  realm: REALM_SPRING_API
+  resource: CLIENT_SPRING
+  credentials:
+    secret: ZaV7QMccg1FfzPwLPULCnM2IIfkaFdTz
+  user-login:
+    grant-type: password
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+
