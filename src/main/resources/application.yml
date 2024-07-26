@@ -1,6 +1,6 @@
 keycloak:
-  auth-server-url: http://localhost:8080/auth/realms/REALM_SPRING_API
   realm: REALM_SPRING_API
+  auth-server-url: http://localhost:8080/auth/realms/${keycloak.realm}
   resource: CLIENT_SPRING
   credentials:
     secret: ZaV7QMccg1FfzPwLPULCnM2IIfkaFdTz
@@ -23,7 +23,7 @@ spring:
               - openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/auth/realms/${keycloak.realm}
+            issuer-uri: ${keycloak.auth-server-url}
             user-name-attribute: preferred_username
 
 
